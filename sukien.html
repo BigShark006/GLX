@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mục Tin Tức</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #1e1e2f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('image/BackgroundGLX.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .LogoGLX {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 70px;
+            height: 70px;
+            z-index: 3;
+            border-radius: 20px;
+        }
+        nav {
+            position: absolute;
+            top: 20px;
+            margin-left: 780px;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0);
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            color: #ddd;
+        }
+        .logo-button {
+            position: absolute;
+            top: 25px;
+            left: 100px;
+            z-index: 1;
+        }
+        .button {
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: none;
+            display: inline-block;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow:
+                inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+                inset -6px -6px 12px rgba(255, 255, 255, 0.7),
+                6px 6px 12px rgba(0, 0, 0, 0.1),
+                -6px -6px 12px rgba(255, 255, 255, 0.7);
+            transition:
+                box-shadow 0.3s ease,
+                transform 0.1s ease;
+        }
+        .button span {
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #777;
+            text-shadow:
+                2px 2px 3px rgba(0, 0, 0, 0.2),
+                -2px -2px 3px rgba(255, 255, 255, 0.8);
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease-out;
+            z-index: 1;
+            padding: 0px 4px;
+        }
+        .button span:hover {
+            transform: translateY(-7px);
+            color: #444;
+            text-shadow:
+                2px 2px 5px rgba(0, 0, 0, 0.3),
+                -2px -2px 5px rgba(255, 255, 255, 0.9);
+        }
+        .button:hover {
+            box-shadow:
+                inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+                4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(255, 255, 255, 0.9);
+        }
+        .button:active {
+            box-shadow:
+                inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+            transform: scale(0.98);
+        }
+        .post-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 200px;
+            z-index: 1;
+            will-change: transform;
+        }
+        .post {
+            background: rgba(46, 46, 63, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            display: block;
+            min-height: 100px;
+        }
+        .post-content {
+            padding-right: 80px;
+        }
+        .post-title {
+            font-size: 1.5em;
+            color: #e2ff3f;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .post-title:hover {
+            color: #ebffa5;
+        }
+        .post-description {
+            margin-top: 10px;
+            color: #b0b0c0;
+        }
+        /* Dropdown menu */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fffc55;
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 5;
+            top: 40px;
+            border-radius: 30px;
+        }
+        /* Dropdown cho Luật GLX - lệch trái */
+        .dropdown-laws {
+            left: 180px;
+            transform: none;
+            top: 37px;
+        }
+        /* Dropdown cho Ảnh & Logo - lệch phải */
+        .dropdown-media {
+            right: 180px;
+            left: auto;
+            transform: none;
+            top: 37px;
+            width: 250px;
+        }
+        .dropdown-command {
+            right: 90px;
+            top: 37px;
+            transform: none;
+        }
+        .dropdown li {
+            display: block;
+            margin: 0;
+        }
+        .dropdown li a {
+            padding: 12px 16px;
+            display: block;
+        }
+        .dropdown li a:hover {
+            background-color: #000000;
+            border-radius: 30px;
+        }
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <img src="image/LogoGLX.png" alt="LogoGLX" class="LogoGLX">
+    <nav>
+        <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sukien.html">Sự kiện</a></li>
+            <li>
+                <a href="#">Luật GLX</a>
+                <ul class="dropdown dropdown-laws">
+                    <li><a href="luat1.html">Luật 1</a></li>
+                    <li><a href="#">Luật 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ảnh & Logo</a>
+                <ul class="dropdown dropdown-media">
+                    <li><a href="#">Ảnh GLX không có nền</a></li>
+                    <li><a href="#">Ảnh GLX có nền</a></li>
+                    <li><a href="#">Ảnh bìa GLX</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Lệnh Craftland</a>
+                <ul class="dropdown dropdown-command">
+                    <li><a href="pc.html">PC</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <button class="logo-button button">
+        <span>G</span>
+        <span>A</span>
+        <span>M</span>
+        <span>E</span>
+        <span>L</span>
+        <span>U</span>
+        <span>M</span>
+        <span>X</span>
+        <span>U</span>
+        <span>M</span>
+    </button>
+    <div class="container">
+        <div class="post-list" id="postList">
+        </div>
+    </div>
+
+    <script>
+        const defaultPosts = [
+            {
+                title: "Chào mừng đến trang sự kiện của GLX",
+                link: "",
+                description: "Nơi đây sẽ chứa các sự kiện mới nhất của GLX"
+            },
+            
+        ];
+
+        window.onload = function() {
+            // Xóa localStorage để đảm bảo sử dụng defaultPosts
+            localStorage.removeItem('posts');
+
+            let savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+            console.log('Saved Posts:', savedPosts);
+
+            if (savedPosts.length === 0) {
+                savedPosts = defaultPosts;
+                localStorage.setItem('posts', JSON.stringify(savedPosts));
+            }
+
+            const postList = document.getElementById('postList');
+            savedPosts.forEach((post, index) => {
+                console.log(`Rendering post ${index}:`, post);
+                const newPost = document.createElement('div');
+                newPost.classList.add('post');
+                newPost.setAttribute('data-index', index);
+                newPost.innerHTML = `
+                    <div class="post-content">
+                        <a href="${post.link}" target="_blank" class="post-title">${post.title}</a>
+                        <div class="post-description">${post.description}</div>
+                    </div>
+                `;
+                postList.appendChild(newPost);
+            });
+            console.log('Total posts rendered:', postList.children.length);
+        };
+    </script>
+</body>
+</html>

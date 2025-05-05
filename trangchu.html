@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Lùm Xùm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sukien.html">Sự kiện</a></li>
+            <li>
+                <a href="#">Luật GLX</a>
+                <ul class="dropdown dropdown-laws">
+                    <li><a href="luat1.html">Luật 1</a></li>
+                    <li><a href="#">Luật 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ảnh & Logo</a>
+                <ul class="dropdown dropdown-media">
+                    <li><a href="#">Ảnh GLX không có nền</a></li>
+                    <li><a href="#">Ảnh GLX có nền</a></li>
+                    <li><a href="#">Ảnh bìa GLX</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Lệnh Craftland</a>
+                <ul class="dropdown dropdown-command">
+                    <li><a href="pc.html">PC</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <img class="BackgroundGLX" src="image/BackgroundGLX.jpg" alt="BackgroundGLX">
+    <img src="image/LogoGLX.png" alt="LogoGLX" class="LogoGLX">
+    <!-- 001 -->
+    <div class="banner"></div>
+    <button class="logo-button button">
+        <span>G</span>
+        <span>A</span>
+        <span>M</span>
+        <span>E</span>
+        <span>L</span>
+        <span>U</span>
+        <span>M</span>
+        <span>X</span>
+        <span>U</span>
+        <span>M</span>
+    </button>
+    <!-- 001 -->
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+        padding-top: 20px;
+    }
+    p {
+        font-size: 16px;
+    }
+    .BackgroundGLX {
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        position: relative;
+    }
+    nav {
+        position: absolute;
+        top: 20px;
+        margin-left: 800px;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0);
+        padding: 10px 0;
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        text-align: center;
+    }
+    nav ul li {
+        display: inline;
+        margin: 0 15px;
+        position: relative;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    nav ul li a:hover {
+        color: #ddd;
+    }* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #1e1e2f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('image/BackgroundGLX.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .LogoGLX {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 70px;
+            height: 70px;
+            z-index: 3;
+            border-radius: 20px;
+        }
+        nav {
+            position: absolute;
+            top: 20px;
+            margin-left: 780px;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0);
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            color: #ddd;
+        }
+        .logo-button {
+            position: absolute;
+            top: 25px;
+            left: 100px;
+            z-index: 1;
+        }
+        .button {
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: none;
+            display: inline-block;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow:
+                inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+                inset -6px -6px 12px rgba(255, 255, 255, 0.7),
+                6px 6px 12px rgba(0, 0, 0, 0.1),
+                -6px -6px 12px rgba(255, 255, 255, 0.7);
+            transition:
+                box-shadow 0.3s ease,
+                transform 0.1s ease;
+        }
+        .button span {
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #777;
+            text-shadow:
+                2px 2px 3px rgba(0, 0, 0, 0.2),
+                -2px -2px 3px rgba(255, 255, 255, 0.8);
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease-out;
+            z-index: 1;
+            padding: 0px 4px;
+        }
+        .button span:hover {
+            transform: translateY(-7px);
+            color: #444;
+            text-shadow:
+                2px 2px 5px rgba(0, 0, 0, 0.3),
+                -2px -2px 5px rgba(255, 255, 255, 0.9);
+        }
+        .button:hover {
+            box-shadow:
+                inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+                4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(255, 255, 255, 0.9);
+        }
+        .button:active {
+            box-shadow:
+                inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+            transform: scale(0.98);
+        }
+    /* Dropdown menu */
+    .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fffc55;
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 5;
+            top: 40px;
+            border-radius: 30px;
+        }
+        /* Dropdown cho Luật GLX - lệch trái */
+        .dropdown-laws {
+            left: -38px; /* Căn sát mép trái của mục cha */
+            transform: none; /* Bỏ căn giữa */
+            top: 25px;
+        }
+        /* Dropdown cho Ảnh & Logo - lệch phải */
+        .dropdown-media {
+            right: -70px; /* Căn sát mép phải của mục cha */
+            left: auto; /* Đảm bảo không bị ảnh hưởng bởi left */
+            transform: none; /* Bỏ căn giữa */
+            top: 25px;
+            width: 250px;
+        }
+        .dropdown-command {
+            right: -14px;
+            top: 25px;
+            transform: none;
+        }
+        .dropdown li {
+            display: block;
+            margin: 0;
+        }
+        .dropdown li a {
+            padding: 12px 16px;
+            display: block;
+        }
+        .dropdown li a:hover {
+            background-color: #000000;
+            border-radius: 30px;
+        }
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+    /* Định vị button logo */
+    .logo-button {
+        position: absolute;
+        top: 25px;
+        left: 100px;
+        z-index: 1;
+    }
+    /* CSS cho button và hiệu ứng */
+    .button {
+        cursor: pointer;
+        padding: 12px 18px;
+        border-radius: 30px;
+        border: none;
+        display: inline-block;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow:
+          inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+          inset -6px -6px 12px rgba(255, 255, 255, 0.7),
+          6px 6px 12px rgba(0, 0, 0, 0.1),
+          -6px -6px 12px rgba(255, 255, 255, 0.7);
+        transition:
+          box-shadow 0.3s ease,
+          transform 0.1s ease;
+    }
+    .button span {
+        font-family: Arial, sans-serif;
+        font-weight: 900;
+        font-size: 24px;
+        color: #777;
+        text-shadow:
+          2px 2px 3px rgba(0, 0, 0, 0.2),
+          -2px -2px 3px rgba(255, 255, 255, 0.8);
+        position: relative;
+        display: inline-block;
+        transition: transform 0.3s ease-out;
+        z-index: 1;
+        padding: 0px 4px;
+    }
+    .button span:hover {
+        transform: translateY(-7px);
+        color: #444;
+        text-shadow:
+          2px 2px 5px rgba(0, 0, 0, 0.3),
+          -2px -2px 5px rgba(255, 255, 255, 0.9);
+    }
+    .button:hover {
+        box-shadow:
+          inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+          inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+          4px 4px 10px rgba(0, 0, 0, 0.1),
+          -4px -4px 10px rgba(255, 255, 255, 0.9);
+    }
+    .button:active {
+        box-shadow:
+          inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+          inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+        transform: scale(0.98);
+    }
+    .LogoGLX {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+        border-radius: 20px;
+    }
+    /* Trang chu */
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdowns = document.querySelectorAll('nav ul li');
+        dropdowns.forEach(item => {
+            item.addEventListener('click', function (e) {
+                const dropdown = this.querySelector('.dropdown');
+                if (dropdown) {
+                    e.preventDefault();
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('nav')) {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
+    });
+</script>
+</html>

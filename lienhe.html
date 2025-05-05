@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #1e1e2f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('image/BackgroundGLX.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        .BackgroundGLX {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .LogoGLX {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 70px;
+            height: 70px;
+            z-index: 3;
+            border-radius: 20px;
+        }
+
+        nav {
+            position: absolute;
+            top: 20px;
+            margin-left: 800px;
+            z-index: 1;
+            background-color: transparent;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #ddd;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fffc55;
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 5;
+            top: 25px;
+            border-radius: 30px;
+        }
+
+        /* Dropdown cho Luật GLX - lệch trái */
+        .dropdown-laws {
+            left: -38px; /* Căn sát mép trái của mục cha */
+            transform: none; /* Bỏ căn giữa */
+            top: 25px;
+        }
+        /* Dropdown cho Ảnh & Logo - lệch phải */
+        .dropdown-media {
+            right: -70px; /* Căn sát mép phải của mục cha */
+            left: auto; /* Đảm bảo không bị ảnh hưởng bởi left */
+            transform: none; /* Bỏ căn giữa */
+            top: 25px;
+            width: 250px;
+        }
+        .dropdown-command {
+            right: -14px;
+            top: 25px;
+            transform: none;
+        }
+
+        .dropdown li {
+            display: block;
+            margin: 0;
+        }
+
+        .dropdown li a {
+            padding: 12px 16px;
+            display: block;
+            color: #000;
+        }
+
+        .dropdown li a:hover {
+            background-color: #000000;
+            border-radius: 30px;
+            color: #fff;
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        .logo-button {
+            position: absolute;
+            top: 25px;
+            left: 100px;
+            z-index: 1;
+        }
+
+        .button {
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: none;
+            display: inline-block;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow:
+                inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+                inset -6px -6px 12px rgba(255, 255, 255, 0.7),
+                6px 6px 12px rgba(0, 0, 0, 0.1),
+                -6px -6px 12px rgba(255, 255, 255, 0.7);
+            transition: box-shadow 0.3s ease, transform 0.1s ease;
+        }
+
+        .button span {
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #777;
+            text-shadow:
+                2px 2px 3px rgba(0, 0, 0, 0.2),
+                -2px -2px 3px rgba(255, 255, 255, 0.8);
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease-out;
+            padding: 0 4px;
+        }
+
+        .button span:hover {
+            transform: translateY(-7px);
+            color: #444;
+            text-shadow:
+                2px 2px 5px rgba(0, 0, 0, 0.3),
+                -2px -2px 5px rgba(255, 255, 255, 0.9);
+        }
+
+        .button:hover {
+            box-shadow:
+                inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+                4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(255, 255, 255, 0.9);
+        }
+
+        .button:active {
+            box-shadow:
+                inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+            transform: scale(0.98);
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            width: 300px;
+            height: 500px;
+            background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+            border-radius: 20px;
+            transition: all .3s;
+        }
+
+        .card2 {
+            width: 300px;
+            height: 500px;
+            background-color: #1a1a1a;
+            border-radius: 20px;
+            transition: all .2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .card2:hover {
+            transform: scale(0.98);
+            border-radius: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 30px 1px rgba(0, 255, 117, 0.3);
+        }
+
+        .card2 img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card2 p {
+            color: #e0e0e0;
+            font-size: 16px;
+            text-align: center;
+            margin: 10px 0 0;
+        }
+
+        .banner {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <img class="BackgroundGLX" src="image/BackgroundGLX.jpg" alt="BackgroundGLX">
+    <img src="image/LogoGLX.png" alt="LogoGLX" class="LogoGLX">
+    <nav>
+        <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sukien.html">Sự kiện</a></li>
+            <li>
+                <a href="#">Luật GLX</a>
+                <ul class="dropdown dropdown-laws">
+                    <li><a href="luat1.html">Luật 1</a></li>
+                    <li><a href="#">Luật 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ảnh & Logo</a>
+                <ul class="dropdown dropdown-media">
+                    <li><a href="#">Ảnh GLX không có nền</a></li>
+                    <li><a href="#">Ảnh GLX có nền</a></li>
+                    <li><a href="#">Ảnh bìa GLX</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Lệnh Craftland</a>
+                <ul class="dropdown dropdown-command">
+                    <li><a href="pc.html">PC</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <button class="logo-button button">
+        <span>G</span>
+        <span>A</span>
+        <span>M</span>
+        <span>E</span>
+        <span>L</span>
+        <span>U</span>
+        <span>M</span>
+        <span>X</span>
+        <span>U</span>
+        <span>M</span>
+    </button>
+    <div class="banner"></div>
+    <div class="card-container">
+        <div class="card">
+            <div class="card2">
+                <img src="image/Tiktok GLX.jpg" alt="Tiktok">
+                <a href="https://www.tiktok.com/@gamelumxum">Link TikTok</a>
+                <p>TikTok Game Lùm Xùm</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card2">
+                <img src="image/Youtube GLX.jpg" alt="Youtube">
+                <a href="https://www.youtube.com/@gamelumxumff">Link Youtube</a>
+                <p>Youtube Game Lùm Xùm</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card2">
+                <img src="image/Facebook GLX.jpg" alt="GLX">
+                <a href="https://www.facebook.com/groups/gamelumxumff">Link Facebook</a>
+                <p>Group Game Lùm Xùm</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card2">
+                <img src="image/Craftland VN.jpg" alt="Craftland">
+                <a href="https://www.facebook.com/groups/6173170586048699">Link Craftland</a>
+                <p>Group Craftland VietNam</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

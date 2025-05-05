@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lệnh dành cho Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1e1e2f;
+            color: #e0e0e0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('image/BackgroundGLX.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Container cho hình ảnh và văn bản */
+        .container {
+            max-width: 900px;
+            margin: 250px auto 0; /* Thêm margin-top để đẩy nội dung xuống dưới nav */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hình ảnh trong container */
+        .image {
+            width: 1000px;
+            height: 500px;
+            transition: transform 0.3s;
+        }
+
+        .image:hover {
+            transform: scale(1.2);
+        }
+
+        /* Văn bản trong container */
+        p {
+            font-size: 25px;
+            color: #333;
+            transition: transform 0.3s, text-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        p:hover {
+            transform: scale(1.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: colorChange 2s infinite;
+        }
+
+        @keyframes colorChange {
+            0% { color: #87CEEB; }
+            5% { color: #ADD8E6; }
+            10% { color: #B0E0E6; }
+            15% { color: #98FB98; }
+            20% { color: #90EE90; }
+            25% { color: #ADFF2F; }
+            30% { color: #FFFF99; }
+            35% { color: #FFD700; }
+            40% { color: #FFA500; }
+            45% { color: #FF8C00; }
+            50% { color: #FF4500; }
+            55% { color: #FF6347; }
+            60% { color: #FF4040; }
+            65% { color: #FF1439; }
+            70% { color: #FF69B4; }
+            75% { color: #FFB6C1; }
+            80% { color: #FF83FA; }
+            85% { color: #FF00FF; }
+            90% { color: #C71585; }
+            95% { color: #8B008B; }
+            100% { color: #87CEEB; }
+        }
+
+        /* Logo GLX */
+        .LogoGLX {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 70px;
+            height: 70px;
+            z-index: 3;
+            border-radius: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 20px;
+            margin-left: 780px;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0);
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #ddd;
+        }
+
+        /* Dropdown menu */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #fffc55;
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+            top: 25px;
+            border-radius: 30px;
+        }
+
+        .dropdown-laws {
+            left: -38px;
+        }
+
+        .dropdown-media {
+            right: -70px;
+            left: auto;
+            width: 250px;
+        }
+
+        .dropdown-command {
+            right: -14px;
+        }
+
+        .dropdown li {
+            display: block;
+            margin: 0;
+        }
+
+        .dropdown li a {
+            padding: 12px 16px;
+            display: block;
+        }
+
+        .dropdown li a:hover {
+            background-color: #000000;
+            border-radius: 30px;
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        /* Button logo */
+        .logo-button {
+            position: absolute;
+            top: 25px;
+            left: 100px;
+            z-index: 1;
+        }
+
+        .button {
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: none;
+            display: inline-block;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow:
+                inset 6px 6px 12px rgba(0, 0, 0, 0.1),
+                inset -6px -6px 12px rgba(255, 255, 255, 0.7),
+                6px 6px 12px rgba(0, 0, 0, 0.1),
+                -6px -6px 12px rgba(255, 255, 255, 0.7);
+            transition: box-shadow 0.3s ease, transform 0.1s ease;
+        }
+
+        .button span {
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #777;
+            text-shadow:
+                2px 2px 3px rgba(0, 0, 0, 0.2),
+                -2px -2px 3px rgba(255, 255, 255, 0.8);
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease-out;
+            padding: 0 4px;
+        }
+
+        .button span:hover {
+            transform: translateY(-7px);
+            color: #444;
+            text-shadow:
+                2px 2px 5px rgba(0, 0, 0, 0.3),
+                -2px -2px 5px rgba(255, 255, 255, 0.9);
+        }
+
+        .button:hover {
+            box-shadow:
+                inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+                4px 4px 10px rgba(0, 0, 0, 0.1),
+                -4px -4px 10px rgba(255, 255, 255, 0.9);
+        }
+
+        .button:active {
+            box-shadow:
+                inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo GLX -->
+    <img src="image/LogoGLX.png" alt="LogoGLX" class="LogoGLX">
+
+    <!-- Button logo -->
+    <button class="logo-button button">
+        <span>G</span><span>A</span><span>M</span><span>E</span>
+        <span>L</span><span>U</span><span>M</span><span>X</span>
+        <span>U</span><span>M</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="sukien.html">Sự kiện</a></li>
+            <li>
+                <a href="#">Luật GLX</a>
+                <ul class="dropdown dropdown-laws">
+                    <li><a href="luat1.html">Luật 1</a></li>
+                    <li><a href="#">Luật 2</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ảnh & Logo</a>
+                <ul class="dropdown dropdown-media">
+                    <li><a href="#">Ảnh GLX không có nền</a></li>
+                    <li><a href="#">Ảnh GLX có nền</a></li>
+                    <li><a href="#">Ảnh bìa GLX</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Lệnh Craftland</a>
+                <ul class="dropdown dropdown-command">
+                    <li><a href="pc.html">PC</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </li>
+            <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Nội dung chính -->
+    <div class="container">
+        <img class="image" src="image/Tiktok GLX.jpg" alt="TikTok GLX">
+        <p>BigSharkVipPro</p>
+        <img class="image" src="image/Tiktok GLX.jpg" alt="TikTok GLX">
+        <p>BigSharkVipPro</p>
+    </div>
+</body>
+</html>
